@@ -13,11 +13,6 @@ app = FastAPI(title = "Proyecto Individual 1", description = "Proyecto individua
 #Carga de base de datos de las peliculas, con las transofrmaciones ya realizadas.
 df_data = pd.read_csv("Datasets/movies_general.csv", low_memory=False, encoding="utf-8")
 
-@app.get("/", response_class=HTMLResponse)
-async def index():
-    output = """¡Bienvenido a la interfaz de consultas del catálogo de películas¡
-    return output
-
 @app.get("/get_peliculas_mes/")
 
 # Se definió una función llamada peliculas_mes que recibe como argumento 
