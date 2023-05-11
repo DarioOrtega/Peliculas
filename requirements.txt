@@ -33,4 +33,3 @@ seaborn==0.12.2
 unicorn==2.0.1.post1
 uvicorn==0.20.0
 wcwidth==0.2.6
-xgboost==1.7.5
