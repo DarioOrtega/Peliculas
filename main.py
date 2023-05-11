@@ -13,28 +13,6 @@ app = FastAPI(title = "Proyecto Individual 1", description = "Proyecto individua
 #Carga de base de datos de las peliculas, con las transofrmaciones ya realizadas.
 df_data = pd.read_csv("Datasets/movies_general.csv", low_memory=False, encoding="utf-8")
 
-#Creamos un directorio index con mensaje de bienvenida
-@app.get("/", response_class=HTMLResponse)
-async def index():
-    output = """¡Bienvenido a la interfaz de consultas del catálogo de películas¡
-    <br> Las consultas que se pueden realizar son: 
-    <br>Consulta 1: Por medio de la ingestión de un dato alfanumérico que identifique un mes, se obtiene el 
-    total de películas estrenadas en ese mes.
-    <br>Consulta 2: Por medio de la ingestión de un dato alfanúmerico que identifique un día, se obtiene el 
-    total de películas estrenadas en ese dia de la semana.
-    <br>Consulta 3: Por medio de la ingestión de un dato correspondiente a una franquicia, se obtiene el 
-    total de películas de la franquicia, la ganancia total y el promedio de ganancias por película.
-    <br>Consulta 4: Por medio de la ingestión de un dato correspondiente a un país, se retorna la cantidad
-    de peliculas producidas en ese país y la ganancia generada por estas.
-    <br>Consulta 5: Por medio de la ingestión de un dato correspondiente a una productora, se retorna la cantidad
-    de películas producidas en ese país.  
-    <br>Consulta 6: Por medio de la ingestión de un dato correspondiente a una película, se retorna la inversión,
-    las ganancias totales, el retorno y el año de estreno.
-    <br> <br>Para conocer el formato de busqueda, consulte el archivo README.md ubicado en el 
-    repositorio de GitHub"""
-    return output#f'Haga su consulta relacionada a las distitnas plataformas de Streaming'
-
-
 
 @app.get("/get_peliculas_mes/")
 
