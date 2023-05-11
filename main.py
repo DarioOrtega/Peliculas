@@ -205,7 +205,7 @@ def franquicia(franquicia:str):
 
     ave_profit = profit/df_result.shape[0]   
     
-    return {'franquicia':close_option, 'cantidad':amount_movies, 'ganancia_total':profit, 'ganancia_promedio':round(ave_profit,2)}
+    return "La franquicia de " +close_option +' tiene una cantidad de ' +amount_movies + ', con una ganancia total de '+profit + ' y una ganancia promedio de '+round(ave_profit,2)
 
 @app.get("/peliculas_pais")
 
@@ -250,7 +250,7 @@ def peliculas_pais(country:str):
 
     count_mov = df_results.shape[0]
 
-    return {'pais':country_output, 'cantidad':count_mov}
+    return "En el país de "+ country_output+ " se han producido " + count_mov + " peliculas"
 
 
 @app.get("/peliculas_productora/")
@@ -296,7 +296,7 @@ def productoras(company:str):
         print("No se encontraron coincidencias para la palabra clave ingresada.")
 
    
-    return {'productora ':company_output, 'ganancia_total ':profit, ' cantidad ':count_mov_company}
+    return "La productora " +company_output, ' ha generado ganancias totales por '+ profit + ' dolares, produciendo '+count_mov_company+" peliculas"
 
 @app.get("/retorno_pelicula/")
 
@@ -315,4 +315,4 @@ def retorno(movie:str):
     df_result = df_data[df_data["title"] == close_option]
     
 
-    return {'pelicula':close_option, 'inversion':  int(df_result["budget"]), 'ganacia':  int(df_result["revenue"]),'retorno':  int(df_result["return"]), 'anio':int(df_result["release_year"])} 
+    return "La pelicula" +close_option +" tuvo  una inversion de" + int(df_result["budget"]), ' dolares, con una ganacia '+int(df_result["revenue"]),' y por lo tanto, un retorno '+  int(df_result["return"])+ ", en el año de" +int(df_result["release_year"])
