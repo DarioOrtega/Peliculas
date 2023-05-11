@@ -259,42 +259,43 @@ def peliculas_pais(country:str):
 # cantidad de películas producidas por esa compañia
 
 def productoras(company:str): 
-    ''Ingresas la productora, retornando la ganancia total y la cantidad de peliculas que produjeron'''  
+    '''Ingresas la productora, retornando la ganancia total y la cantidad de peliculas que produjeron''' 
     
-    # Se obtienen las columnas del DataFrame df_data que contienen la palabra "NameCompany" en su nombre y se inicializa una lista.
+    # Se obtienen las columnas del DataFrame df_data que contienen la palabra "NameCompanie" en su nombre y se inicializa una lista.
     
-    company_colums = df_data.filter(like="NameCompanie").columns
+    company_columns = [col for col in df_data.columns if 'NameCompanie' in col]
 
     results = []
 
 
     # Se itera sobre cada columna obtenida en el paso anterior.
 
-    for columna in company_colums:
+    for columna in company_columns:
 
         # Para cada columna, se obtienen los valores únicos que no son nulos y se realiza una comparación utilizando la función "process.extractOne".
         options = df_data[columna].dropna().unique()
-        best_coinci = process.extractOne(company, options)
+        best_match = process.extractOne(company, options)
 
         # Si se encuentra una coincidencia con una puntuación igual o superior al 90, se agrega el resultado a la lista "results" y se guarda el
         # nombre de la compañía coincidente en la variable "company_output".
-        if best_coinci is not None and best_coinci[1] >= 90:
-            results.append(best_coinci[0])
-            company_output = best_coinci[0]
+        if best_match is not None and best_match[1] >= 90:
+            results.append(best_match[0])
+            company_output = best_match[0]
 
     # Si se obtuvieron resultados coincidentes en el paso anterior, se filtran las filas del DataFrame "df_data" que contengan al menos uno de los 
     # nombres de compañía coincidentes en alguna de las columnas de compañía
     if results:
         df_result = df_data[df_data.isin(results).any(axis=1)]
+
+        # Se calcula la cantidad de películas en el DataFrame filtrado utilizando el atributo "shape".
+        count_mov_company = df_result.shape[0]
+
+        # Se calcula la ganancia total de las películas en el DataFrame filtrado sumando la columna "revenue"
+        profit = df_result["revenue"].sum()
     else:
         print("No se encontraron coincidencias para la palabra clave ingresada.")
 
-    # Se calcula la cantidad de películas en el DataFrame filtrado utilizando el atributo "shape".
-    count_mov_company = df_result.shape[0]
-
-    # Se calcula la ganancia total de las películas en el DataFrame filtrado sumando la columna "revenue"
-    profit = df_result["revenue"].sum()
-
+   
     return {'productora ':company_output, 'ganancia_total ':profit, ' cantidad ':count_mov_company}
 
 @app.get("/retorno_pelicula/")
