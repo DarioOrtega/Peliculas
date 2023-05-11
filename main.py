@@ -263,7 +263,7 @@ def productoras(company:str):
     
     # Se obtienen las columnas del DataFrame df_data que contienen la palabra "NameCompany" en su nombre y se inicializa una lista.
     
-    company_colums = df_data.filter(like="NameCompany").columns
+    company_colums = df_data.filter(like="NameCompanie").columns
 
     results = []
 
