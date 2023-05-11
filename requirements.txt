@@ -22,7 +22,7 @@ Mako==1.2.4
 MarkupSafe==2.1.2
 matplotlib==3.5.0
 matplotlib-inline==0.1.6
-pandas==1.5.2
+pandas==1.4.4
 pure-eval==0.2.2
 pydantic==1.10.7
 pyparsing==3.0.9
