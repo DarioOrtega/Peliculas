@@ -259,7 +259,7 @@ def peliculas_pais(country:str):
 # cantidad de películas producidas por esa compañia
 
 def productoras(company:str): 
-    '''Ingresas el pais, retornando la cantidad de peliculas producidas en el mismo''' 
+    ''Ingresas la productora, retornando la ganancia total y la cantidad de peliculas que produjeron'''  
     
     # Se obtienen las columnas del DataFrame df_data que contienen la palabra "NameCompany" en su nombre y se inicializa una lista.
     
