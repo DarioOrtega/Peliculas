@@ -6,6 +6,7 @@ from dateutil import parser
 import calendar
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
+from sklearn.metrics.pairwise import cosine_similarity
 
 #Creacion de la APP
 app = FastAPI(title = "Proyecto Individual 1", description = "Proyecto individual 1 de Data Science")
@@ -315,3 +316,35 @@ def retorno(movie:str):
     
 
     return "La pelicula" +close_option +" tuvo  una inversion de" + str(int(df_result["budget"])), ' dolares, con una ganacia '+str(int(df_result["revenue"])),' dolares, y por lo tanto, un retorno '+  str(int(df_result["return"]))+ ", en el año de" +str(int(df_result["release_year"]))
+
+@app.get("/recomendación/")
+
+# Se definió una función denominada "recomendación", la toma recibe el nombre de una película como entrada y devuelve 5 películas con puntuación similar.
+
+def recomendacion(pelicula: str):
+    """El usuario ingresa una película y se retornan 5 películas similares, basadas en su puntuación"""
+
+
+    # Buscar el nombre de película más cercano en la lista de películas
+    nombre_pelicula_cercana = process.extractOne(pelicula, df_data['title'])[0]
+
+    # Obtener las puntuaciones de la película de referencia
+    puntuaciones_referencia = df_data[df_data['title'] == nombre_pelicula_cercana]['vote_average'].values[0]
+
+    # Calcular la similitud de puntuación entre la película de referencia y todas las demás películas
+    similarity_scores = df_data['vote_average'].apply(lambda x: fuzz.ratio(str(x), str(puntuaciones_referencia)))
+
+    # Ordenar las películas por score de similitud en orden descendente
+    sorted_indices = similarity_scores.sort_values(ascending=False).index
+
+    # Obtener los nombres de las 5 películas recomendadas
+    peliculas_recomendadas = df_data.loc[sorted_indices[:5], ['title', 'vote_average']]
+
+    # Imprimir las películas recomendadas
+
+    recomendaciones = ['Películas recomendadas para "{}":'.format(nombre_pelicula_cercana)]
+    for _, row in peliculas_recomendadas.iterrows():
+        recomendaciones.append('{} - puntuación: {}'.format(row['title'], row['vote_average']))
+
+    
+    return recomendaciones
