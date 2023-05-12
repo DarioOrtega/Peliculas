@@ -206,7 +206,7 @@ def franquicia(franquicia:str):
 
     ave_profit = profit/df_result.shape[0]   
     
-    "La franquicia de " + close_option + " tiene una cantidad de " + str(amount_movies) + " películas, con una ganancia total de " + str(round(profit, 2)) + " dólares, y una ganancia promedio de " + str(round(ave_profit, 2)) + " dólares por película."
+    return "La franquicia de " + close_option + " tiene una cantidad de " + str(amount_movies) + " películas, con una ganancia total de " + str(round(profit, 2)) + " dólares, y una ganancia promedio de " + str(round(ave_profit, 2)) + " dólares por película."
 
 @app.get("/peliculas_pais")
 
