@@ -324,27 +324,24 @@ def retorno(movie:str):
 def recomendacion(pelicula: str):
     """El usuario ingresa una película y se retornan 5 películas similares, basadas en su puntuación"""
 
-
-    # Buscar el nombre de película más cercano en la lista de películas
+    # Se busca el nombre de película más cercano en la lista de películas
     nombre_pelicula_cercana = process.extractOne(pelicula, df_data['title'])[0]
 
-    # Obtener las puntuaciones de la película de referencia
+    # Se obtienen las puntuaciones de la película de referencia
     puntuaciones_referencia = df_data[df_data['title'] == nombre_pelicula_cercana]['vote_average'].values[0]
 
-    # Calcular la similitud de puntuación entre la película de referencia y todas las demás películas
+    # Se calcula la similitud de puntuación entre la película de referencia y todas las demás películas
     similarity_scores = df_data['vote_average'].apply(lambda x: fuzz.ratio(str(x), str(puntuaciones_referencia)))
 
-    # Ordenar las películas por score de similitud en orden descendente
+    # Se ordenan las películas por score de similitud en orden descendente
     sorted_indices = similarity_scores.sort_values(ascending=False).index
 
-    # Obtener los nombres de las 5 películas recomendadas
+    # Se bbtener los nombres de las 5 películas recomendadas.
     peliculas_recomendadas = df_data.loc[sorted_indices[:5], ['title', 'vote_average']]
 
-    # Imprimir las películas recomendadas
-
+    # Se almacenan en una variable llamada "recomendaciones".
     recomendaciones = ['Películas recomendadas para "{}":'.format(nombre_pelicula_cercana)]
     for _, row in peliculas_recomendadas.iterrows():
         recomendaciones.append('{} - puntuación: {}'.format(row['title'], row['vote_average']))
-
     
     return recomendaciones
