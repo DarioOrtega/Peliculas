@@ -206,7 +206,7 @@ def franquicia(franquicia:str):
 
     ave_profit = profit/df_result.shape[0]   
     
-    return "La franquicia de " +close_option +' tiene una cantidad de ' +str(amount_movies) + ' películas, con una ganancia total de '+ str(round(profit, 2)) + ' dolares, y una ganancia promedio de '+str(round(ave_profit,2) + "dolares por pelicula")
+    "La franquicia de " + close_option + " tiene una cantidad de " + str(amount_movies) + " películas, con una ganancia total de " + str(round(profit, 2)) + " dólares, y una ganancia promedio de " + str(round(ave_profit, 2)) + " dólares por película."
 
 @app.get("/peliculas_pais")
 
@@ -315,7 +315,7 @@ def retorno(movie:str):
     df_result = df_data[df_data["title"] == close_option]
     
 
-    return "La pelicula" +close_option +" tuvo  una inversion de" + str(int(df_result["budget"])), ' dolares, con una ganacia '+str(int(df_result["revenue"])),' dolares, y por lo tanto, un retorno '+  str(int(df_result["return"]))+ ", en el año de" +str(int(df_result["release_year"]))
+    return "La pelicula" +close_option +" tuvo  una inversion de " + str(int(df_result["budget"])), ' dolares, con una ganacia '+str(int(df_result["revenue"])),' dolares, y por lo tanto, un retorno del '+  str(int(df_result["return"]))+ "%, en el año de " +str(int(df_result["release_year"]))
 
 @app.get("/recomendación/")
 
