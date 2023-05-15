@@ -34,12 +34,11 @@ Para el desarrollo del proyecto se siguió la ruta marcada en la siguiente figur
 
 <br/>
 
-**`Desarrollo API`**:   Propones disponibilizar los datos de la empresa usando el framework ***FastAPI***. Las consultas que propones son las siguientes:
+**`Desarrollo API`**:  Para el desarrollo del API, se utilizó el framework el framework ***FastAPI***. Las consultas que propuestas son las siguientes:
 
-Deben crear 6 funciones para los endpoints que se consumirán en la API, recuerden que deben tener un decorador por cada una (@app.get(‘/’)).
   
 + def peliculas_mes(mes):
-    '''Se ingresa el mes y la funcion retorna la cantidad de peliculas que se estrenaron ese mes (nombre del mes, en str, ejemplo 'enero') historicamente'''
+    ''' Donde el usuario ingresa el mes y la funcion retorna la cantidad de peliculas que se estrenaron ese mes (nombre del mes, en str, ejemplo 'enero') historicamente'''
     return {'mes':mes, 'cantidad':respuesta}
 
 + def peliculas_dia(dia):
