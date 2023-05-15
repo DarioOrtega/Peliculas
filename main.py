@@ -6,7 +6,6 @@ from dateutil import parser
 import calendar
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
-from sklearn.metrics.pairwise import cosine_similarity
 
 #Creacion de la APP
 app = FastAPI(title = "Proyecto Individual 1", description = "Proyecto individual 1 de Data Science")
@@ -14,8 +13,10 @@ app = FastAPI(title = "Proyecto Individual 1", description = "Proyecto individua
 #Carga de base de datos de las peliculas, con las transofrmaciones ya realizadas.
 df_data = pd.read_csv("Datasets/movies_general.csv", low_memory=False, encoding="utf-8")
 
+#Creamos un directorio index con mensaje de bienvenida
 @app.get("/", response_class=HTMLResponse)
-async def index():
+
+def index():
     output = """¡Bienvenido a la interfaz de consultas del catálogo de películas¡
     <br> Las consultas que se pueden realizar son: 
     <br>Consulta 1: Por medio de la ingestión de un dato alfanumérico que identifique un mes, se obtiene el 
@@ -33,6 +34,8 @@ async def index():
     <br> <br>Para conocer el formato de busqueda, consulte el archivo README.md ubicado en el 
     repositorio de GitHub"""
     return output#f'Haga su consulta relacionada a las distitnas plataformas de Streaming'
+
+
 
 @app.get("/get_peliculas_mes/")
 
@@ -253,6 +256,7 @@ def peliculas_pais(country:str):
 
     return "En el país de "+ country_output+ " se han producido " + str(count_mov) + " peliculas"
 
+
 @app.get("/peliculas_productora/")
 
 # Se definio unaa función denominada "productoras" que recibe como argumento el nombre de una compañia productora y retorna la 
@@ -296,7 +300,7 @@ def productoras(company:str):
         print("No se encontraron coincidencias para la palabra clave ingresada.")
 
    
-    return "La productora " + company_output + ' ha generado ganancias totales por '+ str(profit) + ' dolares, produciendo '+ str(count_mov_company) +" peliculas"
+    return "La productora " + str(company_output), ' ha generado ganancias totales por '+ str(profit) + ' dolares, produciendo '+ str(count_mov_company) +" peliculas"
 
 @app.get("/retorno_pelicula/")
 
@@ -315,7 +319,7 @@ def retorno(movie:str):
     df_result = df_data[df_data["title"] == close_option]
     
 
-    return "La pelicula" +close_option +" tuvo  una inversion de " + str(int(df_result["budget"])), ' dolares, con una ganacia '+str(int(df_result["revenue"])),' dolares, y por lo tanto, un retorno del '+  str(int(df_result["return"]))+ "%, en el año de " +str(int(df_result["release_year"]))
+    return "La pelicula" +close_option +" tuvo  una inversion de " + str(int(df_result["budget"])), ' dolares, con una ganacia '+str(int(df_result["revenue"])),' y por lo tanto, un retorno del '+  str(int(df_result["return"]))+ "%, en el año de" + str(int(df_result["release_year"]))
 
 @app.get("/recomendación/")
 
@@ -324,24 +328,27 @@ def retorno(movie:str):
 def recomendacion(pelicula: str):
     """El usuario ingresa una película y se retornan 5 películas similares, basadas en su puntuación"""
 
-    # Se busca el nombre de película más cercano en la lista de películas
+
+    # Buscar el nombre de película más cercano en la lista de películas
     nombre_pelicula_cercana = process.extractOne(pelicula, df_data['title'])[0]
 
-    # Se obtienen las puntuaciones de la película de referencia
+    # Obtener las puntuaciones de la película de referencia
     puntuaciones_referencia = df_data[df_data['title'] == nombre_pelicula_cercana]['vote_average'].values[0]
 
-    # Se calcula la similitud de puntuación entre la película de referencia y todas las demás películas
+    # Calcular la similitud de puntuación entre la película de referencia y todas las demás películas
     similarity_scores = df_data['vote_average'].apply(lambda x: fuzz.ratio(str(x), str(puntuaciones_referencia)))
 
-    # Se ordenan las películas por score de similitud en orden descendente
+    # Ordenar las películas por score de similitud en orden descendente
     sorted_indices = similarity_scores.sort_values(ascending=False).index
 
-    # Se bbtener los nombres de las 5 películas recomendadas.
+    # Obtener los nombres de las 5 películas recomendadas
     peliculas_recomendadas = df_data.loc[sorted_indices[:5], ['title', 'vote_average']]
 
-    # Se almacenan en una variable llamada "recomendaciones".
+    # Imprimir las películas recomendadas
+
     recomendaciones = ['Películas recomendadas para "{}":'.format(nombre_pelicula_cercana)]
     for _, row in peliculas_recomendadas.iterrows():
         recomendaciones.append('{} - puntuación: {}'.format(row['title'], row['vote_average']))
+
     
     return recomendaciones
