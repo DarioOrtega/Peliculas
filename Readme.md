@@ -72,11 +72,11 @@ Para el desarrollo del proyecto se siguió la ruta marcada en la siguiente figur
 
 **`Análisis exploratorio de los datos`**: _(Exploratory Data Analysis-EDA)_
 
-Después de las transformaciones realizadas inicialmente, se realizo un pequeño EDA, observando las relaciones entre las diferentes variables de los datasets, buscando outliers o anomalías. Para este análisis se hizó uso de la libreria matplotlib y seaborn, observando el comportamiento de algunas variables por medio de pairplot y la matriz de correlación de Pearson. El desarrollo de este análisis se encuentra en el archivo `EDA.py`.
+Después de las transformaciones realizadas inicialmente, se realizo un pequeño EDA, observando las relaciones entre las diferentes variables de los datasets, buscando outliers o anomalías. Para este análisis se hizó uso de la libreria matplotlib y seaborn, observando el comportamiento de algunas variables por medio de pairplot y la matriz de correlación de Pearson. El desarrollo de este análisis se encuentra en el archivo `EDA.py`. Se creo una nube de palabras por medio de la libreria Wordcloud.
 
 **`Sistema de recomendación`**: 
 
-Éste sistema de recomendación consiste en recomendar películas a los usuarios basándose en películas similares, por lo que se encuentra la similitud de puntuación entre esa película y el resto de películas, ordenandose según el score de similaridad y devolviendo una lista de Python con 5 valores, cada uno siendo el string del nombre de las películas con mayor puntaje, en orden descendente. Esta funcion se encuentra ser deployado en la [API](https://pi1-huzk.onrender.com/docs#/) y se llama recomendación:
+Éste sistema de recomendación consiste en recomendar películas a los usuarios basándose en películas similares, por lo que se encuentra la similitud de puntuación entre esa película y el resto de películas, ordenandose según el score de similaridad y devolviendo una lista de Python con 5 valores, cada uno siendo el string del nombre de las películas con mayor puntaje, en orden descendente. Esta funcion se encuentra ser deployado en la [API](https://pi1-huzk.onrender.com/docs#/) y se llama recomendación.
 
 
 **`Video`**: Necesitas que al equipo le quede claro que tus herramientas funcionan realmente! Haces un video mostrando el resultado de las consultas propuestas y de tu modelo de ML entrenado!
