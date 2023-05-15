@@ -66,7 +66,7 @@ Para el desarrollo del proyecto se siguió la ruta marcada en la siguiente figur
 <br/>
 
 
-**`Deployment`**:  Para el deployment de la API se utilizo la red de servicios [Render](https://render.com/docs/free#free-web-services), utilizando como tutorial el proporcionado en [Tutorial de Render](https://github.com/HX-FNegrete/render-fastapi-tutorial). En este [link](https://pi1-huzk.onrender.com/docs#/) se puede observar el deployment del API. 
+**`Deployment`**:  Para el deployment de la API se utilizo la red de servicios [Render](https://render.com/docs/free#free-web-services), utilizando como tutorial el proporcionado en [Tutorial de Render](https://github.com/HX-FNegrete/render-fastapi-tutorial). En este [link](https://pi1-henry-0jww.onrender.com/docs#/) se puede observar el deployment del API. 
 
 <br/>
 
