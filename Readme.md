@@ -66,7 +66,7 @@ Para el desarrollo del proyecto se siguió la ruta marcada en la siguiente figur
 <br/>
 
 
-**`Deployment`**:  Para el deployment de la API se utilizo la red de servicios Render (https://render.com/docs/free#free-web-services) y tienes un [tutorial de Render](https://github.com/HX-FNegrete/render-fastapi-tutorial) que te hace la vida mas facil :smile: . Tambien podrias usar [Railway](https://railway.app/), o cualquier otro servicio que permita que la API pueda ser consumida desde la web.
+**`Deployment`**:  Para el deployment de la API se utilizo la red de servicios [Render](https://render.com/docs/free#free-web-services) y tienes un [tutorial de Render](https://github.com/HX-FNegrete/render-fastapi-tutorial) que te hace la vida mas facil :smile: . Tambien podrias usar [Railway](https://railway.app/), o cualquier otro servicio que permita que la API pueda ser consumida desde la web.
 
 <br/>
 
