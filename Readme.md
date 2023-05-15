@@ -79,6 +79,6 @@ Después de las transformaciones realizadas inicialmente, se realizo un pequeño
 Éste sistema de recomendación consiste en recomendar películas a los usuarios basándose en películas similares, por lo que se encuentra la similitud de puntuación entre esa película y el resto de películas, ordenandose según el score de similaridad y devolviendo una lista de Python con 5 valores, cada uno siendo el string del nombre de las películas con mayor puntaje, en orden descendente. Esta funcion se encuentra ser deployado en la [API](https://pi1-huzk.onrender.com/docs#/) y se llama recomendación.
 
 
-**`Video`**: Para ver el funcionamiento del API y todo el código implementado se genero el siguiente [video](https://drive.google.com/uc?id=1dbCdVenDMfjB98o-ct6pepPJndTLryaP&export=download)
+**`Video`**: Para ver el funcionamiento del API y todo el código implementado se genero el siguiente [video](https://drive.google.com/file/d/1dbCdVenDMfjB98o-ct6pepPJndTLryaP/view?usp=share_link)
 
 
