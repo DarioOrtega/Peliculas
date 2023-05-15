@@ -11,6 +11,8 @@ Se contaba con una base de datos de peliculas, las cual debia ser tratada, reali
 
 ## Desarrollo
 
+Para el desarrollo del proyecto se siguió la ruta marcada en la siguiente figura:
+
 <p align="center">
 <img src="https://github.com/HX-PRomero/PI_ML_OPS/raw/main/src/DiagramaConceptualDelFlujoDeProcesos.png"  height=500>
 </p>
