@@ -18,7 +18,7 @@ Para el desarrollo del proyecto se siguió la ruta marcada en la siguiente figur
 </p>
 
 
-**`Transformaciones`**:  En este paso se empezó por análizar el contenido del archivo .xlsx, observando su contenido. Posterior a esto, se llevaron a cabo las siguientes transformaciones, las cuales se encuentran en archivo `transformaciones.py`:
+**`Transformaciones`**:  En este paso se empezó por análizar el contenido del archivo .xlsx, observando su contenido. Posterior a esto, se llevaron a cabo las siguientes transformaciones, las cuales se encuentran en archivo `transformaciones.ipny`:
 
 + Los campos **`belongs_to_collection`**, **`genres`**, **`production_companies`**, **`production_countries`**  y **`spoken_languajes`** estaban anidados, tenian un diccionario o una lista como valores en cada fila, por lo tanto se desanidaron y posteriormente se unieron en un nuevo datasets para su posterior uso en las consultas propuestas. 
 
@@ -72,17 +72,12 @@ Para el desarrollo del proyecto se siguió la ruta marcada en la siguiente figur
 
 **`Análisis exploratorio de los datos`**: _(Exploratory Data Analysis-EDA)_
 
-Ya los datos están limpios, ahora es tiempo de investigar las relaciones que hay entre las variables de los datasets, ver si hay outliers o anomalías (que no tienen que ser errores necesariamente :eyes: ), y ver si hay algún patrón interesante que valga la pena explorar en un análisis posterior. Las nubes de palabras dan una buena idea de cuáles palabras son más frecuentes en los títulos, ¡podría ayudar al sistema de recomendación! Sabes que puedes apoyarte en librerías como _pandas profiling, missingno, sweetviz, autoviz_, entre otros y sacar de allí tus conclusiones 😉
+Después de las transformaciones realizadas inicialmente, se realizo un pequeño EDA, observando las relaciones entre las diferentes variables de los datasets, buscando outliers o anomalías. Para este análisis se hizó uso de la libreria matplotlib y seaborn, observando el comportamiento de algunas variables por medio de pairplot y la matriz de correlación de Pearson. El desarrollo de este análisis se encuentra en el archivo `EDA.py`.
 
 **`Sistema de recomendación`**: 
 
-Una vez que toda la data es consumible por la API, está lista para consumir por los departamentos de Analytics y Machine Learning, y nuestro EDA nos permite entender bien los datos a los que tenemos acceso, es hora de entrenar nuestro modelo de machine learning para armar un sistema de recomendación de películas. El EDA debería incluir gráficas interesantes para extraer datos, como por ejemplo una nube de palabras con las palabras más frecuentes en los títulos de las películas. Éste consiste en recomendar películas a los usuarios basándose en películas similares, por lo que se debe encontrar la similitud de puntuación entre esa película y el resto de películas, se ordenarán según el score de similaridad y devolverá una lista de Python con 5 valores, cada uno siendo el string del nombre de las películas con mayor puntaje, en orden descendente. Debe ser deployado como una función adicional de la API anterior y debe llamarse:
+Éste sistema de recomendación consiste en recomendar películas a los usuarios basándose en películas similares, por lo que se encuentra la similitud de puntuación entre esa película y el resto de películas, ordenandose según el score de similaridad y devolviendo una lista de Python con 5 valores, cada uno siendo el string del nombre de las películas con mayor puntaje, en orden descendente. Esta funcion se encuentra ser deployado en la [API](https://pi1-huzk.onrender.com/docs#/) y se llama recomendación:
 
-+ def recomendacion('titulo'):
-    '''Ingresas un nombre de pelicula y te recomienda las similares en una lista de 5 valores'''
-    return {'lista recomendada': respuesta}
-
-<br/>
 
 **`Video`**: Necesitas que al equipo le quede claro que tus herramientas funcionan realmente! Haces un video mostrando el resultado de las consultas propuestas y de tu modelo de ML entrenado!
 
