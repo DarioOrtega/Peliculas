@@ -18,20 +18,19 @@ Para el desarrollo del proyecto se siguió la ruta marcada en la siguiente figur
 </p>
 
 
-**`Transformaciones`**:  Para este MVP no necesitas perfección, ¡necesitas rapidez! ⏩ Vas a hacer estas, ***y solo estas***, transformaciones a los datos:
+**`Transformaciones`**:  En este paso se empezó por análizar el contenido del archivo .xlsx, observando su contenido. Posterior a esto, se llevaron a cabo las siguientes transformaciones, las cuales se encuentran en archivo `transformaciones.py`:
 
++ Los campos **`belongs_to_collection`**, **`genres`**, **`production_companies`**, **`production_countries`**  y **`spoken_languajes`** estaban anidados, tenian un diccionario o una lista como valores en cada fila, por lo tanto se desanidaron y posteriormente se unieron en un nuevo datasets para su posterior uso en las consultas propuestas. 
 
-+ Algunos campos, como **`belongs_to_collection`**, **`production_companies`** y otros (ver diccionario de datos) están anidados, esto es o bien tienen un diccionario o una lista como valores en cada fila, ¡deberán desanidarlos para poder  y unirlos al dataset de nuevo hacer alguna de las consultas de la API! O bien buscar la manera de acceder a esos datos sin desanidarlos.
-
-+ Los valores nulos de los campos **`revenue`**, **`budget`** deben ser rellenados por el número **`0`**.
++ Los valores nulos de los campos **`revenue`**, **`budget`** se rellenaron por el número **`0`**.
   
-+ Los valores nulos del campo **`release date`** deben eliminarse.
++ Los valores nulos del campo **`release date`** se eliminaron.
 
-+ De haber fechas, deberán tener el formato **`AAAA-mm-dd`**, además deberán crear la columna **`release_year`** donde extraerán el año de la fecha de estreno.
++ Se modificaron las fechas para tener el formato **`AAAA-mm-dd`**, eliminando algunos filas que contenian datos incorrectos, creando la columna **`release_year`** donde se extrajo el año de la fecha de estreno.
 
-+ Crear la columna con el retorno de inversión, llamada **`return`** con los campos **`revenue`** y **`budget`**, dividiendo estas dos últimas **`revenue / budget`**, cuando no hay datos disponibles para calcularlo, deberá tomar el valor **`0`**.
++ Se creó la columna con el retorno de inversión, llamada **`return`** con los campos **`revenue`** y **`budget`**, dividiendo estas dos últimas **`revenue / budget`**, cuando no hubó datos disponibles para calcularlo, se tomó el valor **`0`**.
 
-+ Eliminar las columnas que no serán utilizadas, **`video`**,**`imdb_id`**,**`adult`**,**`original_title`**,**`vote_count`**,**`poster_path`** y **`homepage`**.
++ Así mismo, se eliminaron las columnas que no iban a ser utilizadas, **`video`**,**`imdb_id`**,**`adult`**,**`original_title`**,**`vote_count`**,**`poster_path`** y **`homepage`**.
 
 <br/>
 
