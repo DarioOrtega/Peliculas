@@ -17,19 +17,19 @@ Análisis Exploratorio de los datos (Exploratory Data Analysis = EDA)
 
 Se realizo un EDA, observando las relaciones entre las diferentes variables del dataset. Para este análisis se hizó uso de la libreria matplotlib,  pandas, seaborn y wordcloud, por medio de las cuales se observó el comportamiento de algunas variables, con la ayuda de gráficas, y el uso de pairplots, la matriz de correlación de Pearson, entre otros. El desarrollo de este análisis se encuentra en el archivo `EDA.py`. Así mismo, se creó una nube de palabras por medio de la libreria Wordcloud.
 
-Dashboard
+# Dashboard
 
 Por medio de la aplicación de Power BI Desktop se construyó un Dashboard, en donde se observa el análisis del dataset una vez hecho el EDA. El desarrollo de este dashboard se encuentra en el archivo AccidentesDashboard.pbix.
 
-KPIs
+# KPIs
 
 En el análisis se tuvieron en cuenta 4 KPIs:
 
-Tasa de mortalidad total: Tasa de mortalidad a nivel anual, fallecidos en los accidentes aéreos respecto al total de personas en los vuelos involucrados. 
+- Tasa de mortalidad total: Tasa de mortalidad a nivel anual, fallecidos en los accidentes aéreos respecto al total de personas en los vuelos involucrados. 
 
-Tasa de mortalidad promedio por accidente: La tasa de mortalidad promedio por accidente se calculó dividiendo el número total de fallecidos entre el número total de accidentes. 
+- Tasa de mortalidad promedio por accidente: La tasa de mortalidad promedio por accidente se calculó dividiendo el número total de fallecidos entre el número total de accidentes. 
 
-Rutas más Peligrosas: Se realizó un análisis de las rutas más peligrosas al contar el número de accidentes por ruta y ordenarlas de manera descendente. 
+* Rutas más Peligrosas: Se realizó un análisis de las rutas más peligrosas al contar el número de accidentes por ruta y ordenarlas de manera descendente. 
 
 Tasa de supervivencia:
 
