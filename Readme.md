@@ -31,11 +31,10 @@ En el análisis se tuvieron en cuenta 4 KPIs:
 
 * Rutas más Peligrosas: Se realizó un análisis de las rutas más peligrosas al contar el número de accidentes por ruta y ordenarlas de manera descendente. 
 
-Tasa de supervivencia:
+* Tasa de supervivencia: Sobrevivientes promedio a los accidentes.
 
-Sobrevivientes promedio a los accidentes.
 
-Análisis
+# Análisis
 
 Se realizón un análisis de los gráficos y datos resultantes al realizar el dashboard en Power Bi, el cual se encuentra en el documento reporte_analisis.docx.
 
